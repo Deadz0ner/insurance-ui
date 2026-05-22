@@ -1,33 +1,55 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
         bg: {
-          base: "#08080A",
-          surface: "#101013",
-          card: "#15151A",
-          elevated: "#1C1C22",
+          base: "rgb(var(--bg-base) / <alpha-value>)",
+          surface: "rgb(var(--bg-surface) / <alpha-value>)",
+          card: "rgb(var(--bg-card) / <alpha-value>)",
+          elevated: "rgb(var(--bg-elevated) / <alpha-value>)",
         },
         line: {
-          DEFAULT: "#26262E",
-          soft: "#1E1E25",
+          DEFAULT: "rgb(var(--line) / <alpha-value>)",
+          soft: "rgb(var(--line-soft) / <alpha-value>)",
         },
         ink: {
-          primary: "#F5F5F7",
-          secondary: "#A1A1AA",
-          muted: "#6B6B73",
-          dim: "#4A4A52",
+          primary: "rgb(var(--ink-primary) / <alpha-value>)",
+          secondary: "rgb(var(--ink-secondary) / <alpha-value>)",
+          muted: "rgb(var(--ink-muted) / <alpha-value>)",
+          dim: "rgb(var(--ink-dim) / <alpha-value>)",
         },
         accent: {
-          DEFAULT: "#E4E4E7",
-          glow: "#F5F5F7",
+          DEFAULT: "rgb(var(--ink-primary) / <alpha-value>)",
+          glow: "rgb(var(--ink-secondary) / <alpha-value>)",
         },
-        success: "#4ADE80",
-        warning: "#FBBF24",
-        danger: "#F87171",
+        brand: {
+          DEFAULT: "rgb(var(--brand) / <alpha-value>)",
+          deep: "rgb(var(--brand-deep) / <alpha-value>)",
+          soft: "rgb(var(--brand-soft) / <alpha-value>)",
+        },
+        gold: {
+          DEFAULT: "rgb(var(--gold) / <alpha-value>)",
+          deep: "rgb(var(--gold-deep) / <alpha-value>)",
+          soft: "rgb(var(--gold-soft) / <alpha-value>)",
+        },
+        coral: {
+          DEFAULT: "rgb(var(--coral) / <alpha-value>)",
+          deep: "rgb(var(--coral-deep) / <alpha-value>)",
+          soft: "rgb(var(--coral-soft) / <alpha-value>)",
+        },
+        type: {
+          health: "rgb(var(--type-health) / <alpha-value>)",
+          motor: "rgb(var(--type-motor) / <alpha-value>)",
+          life: "rgb(var(--type-life) / <alpha-value>)",
+          travel: "rgb(var(--type-travel) / <alpha-value>)",
+        },
+        success: "rgb(var(--success) / <alpha-value>)",
+        warning: "rgb(var(--warning) / <alpha-value>)",
+        danger: "rgb(var(--danger) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["-apple-system", "BlinkMacSystemFont", "Inter", "Segoe UI", "sans-serif"],

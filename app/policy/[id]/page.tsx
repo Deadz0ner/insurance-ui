@@ -5,17 +5,7 @@ import AppShell from "@/components/AppShell";
 import ScreenHeader from "@/components/ScreenHeader";
 import { policies } from "@/lib/data";
 import { useT } from "@/components/LanguageProvider";
-import {
-  FileText,
-  Sparkles,
-  MessageCircle,
-  Download,
-  Hospital,
-  Shield,
-  ChevronRight,
-  Check,
-  X,
-} from "lucide-react";
+import { Sparkles, Check, X } from "lucide-react";
 
 export default function PolicyDetail({ params }: { params: { id: string } }) {
   const { t } = useT();
@@ -27,9 +17,8 @@ export default function PolicyDetail({ params }: { params: { id: string } }) {
     t("policy.covered.2"),
     t("policy.covered.3"),
     t("policy.covered.4"),
-    t("policy.covered.5"),
   ];
-  const excluded = [t("policy.excluded.1"), t("policy.excluded.2"), t("policy.excluded.3")];
+  const excluded = [t("policy.excluded.1"), t("policy.excluded.2")];
 
   const memberLabel = (m: string) => {
     if (m === "Self") return t("policy.member.self");
@@ -40,32 +29,32 @@ export default function PolicyDetail({ params }: { params: { id: string } }) {
 
   return (
     <AppShell>
-      <ScreenHeader title={policy.insurer} subtitle={policy.product} back="/wallet" />
+      <ScreenHeader title={policy.insurer} back="/wallet" />
 
-      {/* Hero */}
-      <div className="px-5">
-        <div className="rounded-3xl bg-gradient-to-br from-bg-elevated to-bg-card border border-line p-5">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] uppercase tracking-widest text-ink-muted">
-              {t(`wallet.filter.${policy.type.toLowerCase()}` as any)} · {policy.status === "Expiring" ? t("wallet.status.expiring") : t("wallet.status.active")}
-            </span>
-            <span className="text-[10px] text-ink-muted">{policy.policyNo}</span>
-          </div>
-          <p className="mt-3 text-[34px] font-semibold tracking-tight">{policy.sumInsured}</p>
-          <p className="text-[11px] text-ink-secondary">{t("policy.sum")}</p>
+      {/* Hero — only the headline number */}
+      <div className="px-6 mt-6">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand/[0.14] via-brand/[0.03] to-white border border-brand/20 p-6 shadow-[0_8px_24px_-8px_rgba(124,58,237,0.15)]">
+          <div className="absolute -top-16 -right-16 w-52 h-52 rounded-full bg-brand/[0.18] blur-3xl" />
 
-          <div className="mt-4 pt-4 border-t border-line grid grid-cols-3 gap-3 text-[11px]">
+          <p className="relative text-[10px] text-brand uppercase tracking-[0.15em] font-semibold">
+            {t(`wallet.filter.${policy.type.toLowerCase()}` as any)} · {policy.product}
+          </p>
+          <p className="relative mt-3 text-[42px] font-semibold tracking-tight leading-none bg-gradient-to-r from-brand-deep to-brand bg-clip-text text-transparent">
+            {policy.sumInsured}
+          </p>
+          <p className="relative mt-2 text-[12px] text-ink-secondary">
+            {t("policy.sum")}
+          </p>
+
+          <div className="relative mt-6 pt-5 border-t border-brand/15 flex items-center gap-5 text-[11.5px]">
             <div>
               <p className="text-ink-muted">{t("policy.premiumYr")}</p>
-              <p className="text-ink-primary font-medium text-[13px]">{policy.premium}/yr</p>
+              <p className="text-ink-primary font-semibold text-[13px] mt-0.5">{policy.premium}</p>
             </div>
-            <div>
-              <p className="text-ink-muted">{t("policy.validTill")}</p>
-              <p className="text-ink-primary font-medium text-[13px]">{policy.endDate}</p>
-            </div>
+            <div className="w-px h-8 bg-brand/15" />
             <div>
               <p className="text-ink-muted">{t("policy.renewsIn")}</p>
-              <p className={`font-medium text-[13px] ${policy.status === "Expiring" ? "text-warning" : "text-ink-primary"}`}>
+              <p className={`font-semibold text-[13px] mt-0.5 ${policy.status === "Expiring" ? "text-warning" : "text-brand"}`}>
                 {policy.renewIn}
               </p>
             </div>
@@ -73,51 +62,35 @@ export default function PolicyDetail({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      {/* Action grid */}
-      <div className="px-5 mt-4 grid grid-cols-4 gap-2">
-        {[
-          { icon: FileText, label: t("policy.action.doc") },
-          { icon: Hospital, label: t("policy.action.hospitals") },
-          { icon: Download, label: t("policy.action.download") },
-          { icon: Shield, label: t("policy.action.compare") },
-        ].map(({ icon: Icon, label }) => (
-          <button
-            key={label}
-            className="flex flex-col items-center gap-1.5 py-3 rounded-2xl bg-bg-card border border-line hover:bg-bg-elevated transition"
-          >
-            <Icon size={16} className="text-ink-primary" />
-            <span className="text-[10px] text-ink-secondary text-center px-1">{label}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* KYP Summary */}
-      <div className="px-5 mt-5">
-        <div className="flex items-center gap-2 mb-3">
-          <Sparkles size={14} className="text-ink-primary" />
-          <h2 className="text-[14px] font-semibold">{t("policy.kyp.title")}</h2>
-          <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-bg-card border border-line text-ink-muted uppercase tracking-wider">
-            AI
-          </span>
+      {/* KYP — single AI insight, no clutter */}
+      <div className="px-6 mt-10">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="w-7 h-7 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center">
+            <Sparkles size={13} className="text-brand" />
+          </div>
+          <h2 className="text-[16px] font-semibold tracking-tight">{t("policy.kyp.title")}</h2>
         </div>
-        <div className="rounded-2xl bg-bg-card border border-line p-4 text-[13px] text-ink-secondary leading-relaxed">
-          {t("policy.kyp.body")} <span className="text-ink-primary underline">{t("policy.kyp.read")}</span>
-        </div>
+        <p className="text-[14px] text-ink-secondary leading-relaxed">
+          {t("policy.kyp.body")}
+        </p>
       </div>
 
       {/* Members */}
       {policy.members && (
-        <div className="px-5 mt-5">
-          <h2 className="text-[14px] font-semibold mb-3">{t("policy.members")}</h2>
-          <div className="flex gap-2">
+        <div className="px-6 mt-10">
+          <h2 className="text-[16px] font-semibold tracking-tight mb-4">{t("policy.members")}</h2>
+          <div className="flex gap-3">
             {policy.members.map((m) => {
               const lab = memberLabel(m);
               return (
-                <div key={m} className="flex-1 px-3 py-3 rounded-2xl bg-bg-card border border-line text-center">
-                  <div className="w-8 h-8 rounded-full bg-bg-elevated border border-line mx-auto mb-1.5 flex items-center justify-center text-[12px]">
+                <div
+                  key={m}
+                  className="flex-1 px-3 py-4 rounded-2xl bg-bg-card border border-line text-center"
+                >
+                  <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 mx-auto mb-2 flex items-center justify-center text-[14px] font-semibold text-brand">
                     {lab[0]}
                   </div>
-                  <p className="text-[11px] text-ink-secondary">{lab}</p>
+                  <p className="text-[11.5px] text-ink-secondary">{lab}</p>
                 </div>
               );
             })}
@@ -125,41 +98,27 @@ export default function PolicyDetail({ params }: { params: { id: string } }) {
         </div>
       )}
 
-      {/* Coverage */}
-      <div className="px-5 mt-5">
-        <h2 className="text-[14px] font-semibold mb-3">{t("policy.covered")}</h2>
-        <div className="rounded-2xl bg-bg-card border border-line divide-y divide-line">
+      {/* Coverage — clear two-list pattern */}
+      <div className="px-6 mt-10">
+        <h2 className="text-[16px] font-semibold tracking-tight mb-4">{t("policy.covered")}</h2>
+        <div className="space-y-2">
           {covered.map((c) => (
-            <div key={c} className="flex items-center gap-3 px-4 py-3">
-              <div className="w-6 h-6 rounded-full bg-success/15 flex items-center justify-center">
-                <Check size={12} className="text-success" />
+            <div key={c} className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-bg-card border border-line">
+              <div className="w-6 h-6 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
+                <Check size={12} className="text-brand" strokeWidth={2.8} />
               </div>
               <p className="text-[13px] text-ink-primary">{c}</p>
             </div>
           ))}
           {excluded.map((c) => (
-            <div key={c} className="flex items-center gap-3 px-4 py-3">
-              <div className="w-6 h-6 rounded-full bg-danger/15 flex items-center justify-center">
-                <X size={12} className="text-danger" />
+            <div key={c} className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-bg-card border border-line">
+              <div className="w-6 h-6 rounded-full bg-ink-muted/10 flex items-center justify-center shrink-0">
+                <X size={12} className="text-ink-muted" strokeWidth={2.4} />
               </div>
               <p className="text-[13px] text-ink-muted line-through">{c}</p>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Ask Your Policy */}
-      <div className="px-5 mt-5 mb-5">
-        <button className="w-full rounded-2xl bg-bg-card border border-line p-4 flex items-center gap-3 hover:bg-bg-elevated transition">
-          <div className="w-10 h-10 rounded-xl bg-bg-elevated border border-line flex items-center justify-center">
-            <MessageCircle size={16} className="text-ink-primary" />
-          </div>
-          <div className="flex-1 text-left">
-            <p className="text-[13px] font-medium">{t("policy.ask.title")}</p>
-            <p className="text-[11px] text-ink-muted">{t("policy.ask.sub")}</p>
-          </div>
-          <ChevronRight size={16} className="text-ink-muted" />
-        </button>
       </div>
     </AppShell>
   );

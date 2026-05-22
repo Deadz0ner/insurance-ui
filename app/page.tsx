@@ -17,8 +17,9 @@ export default function Welcome() {
 
   return (
     <div className="relative min-h-full px-7 pt-16 pb-10 flex flex-col">
-      <div className="absolute -top-40 -left-20 w-80 h-80 rounded-full bg-white/[0.03] blur-3xl" />
-      <div className="absolute top-40 -right-20 w-72 h-72 rounded-full bg-white/[0.02] blur-3xl" />
+      <div className="absolute -top-40 -left-20 w-80 h-80 rounded-full bg-brand/[0.22] blur-3xl" />
+      <div className="absolute top-40 -right-20 w-72 h-72 rounded-full bg-coral/[0.18] blur-3xl" />
+      <div className="absolute bottom-10 -left-10 w-64 h-64 rounded-full bg-gold/[0.15] blur-3xl" />
 
       <motion.div
         initial={{ opacity: 0, y: 12 }}
@@ -26,8 +27,8 @@ export default function Welcome() {
         transition={{ duration: 0.6 }}
         className="flex items-center gap-2.5"
       >
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-line flex items-center justify-center">
-          <ShieldCheck size={18} className="text-ink-primary" />
+        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand/25 to-brand/5 border border-brand/30 flex items-center justify-center">
+          <ShieldCheck size={18} className="text-brand" />
         </div>
         <div>
           <div className="text-[15px] font-semibold tracking-tight">InsureOne</div>
@@ -41,7 +42,7 @@ export default function Welcome() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-line bg-bg-card/60 text-[11px] text-ink-secondary">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-brand/30 bg-brand/[0.08] text-[11px] text-brand">
             <Sparkles size={11} /> {t("welcome.tagline")}
           </div>
           <h1 className="mt-6 text-[42px] leading-[1.05] font-semibold tracking-tight">
@@ -49,7 +50,7 @@ export default function Welcome() {
             <br />
             <span className="text-ink-muted">{t("welcome.title.2")}</span>
             <br />
-            <span className="bg-gradient-to-r from-ink-primary to-ink-muted bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand-deep via-brand to-coral bg-clip-text text-transparent">
               {t("welcome.title.3")}
             </span>
           </h1>
@@ -84,7 +85,7 @@ export default function Welcome() {
       >
         <Link
           href="/dashboard"
-          className="w-full h-13 py-4 rounded-2xl bg-ink-primary text-bg-base font-medium text-[15px] flex items-center justify-center gap-2 active:scale-[0.98] transition"
+          className="w-full h-13 py-4 rounded-2xl bg-gradient-to-b from-brand to-brand-deep text-white font-semibold text-[15px] flex items-center justify-center gap-2 shadow-[0_8px_24px_-6px_rgba(91,33,182,0.35)] active:scale-[0.98] transition"
         >
           <Fingerprint size={18} /> {t("welcome.cta.bima")}
         </Link>
