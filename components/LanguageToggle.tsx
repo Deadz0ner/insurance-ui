@@ -20,7 +20,7 @@ export default function LanguageToggle({ compact = false }: { compact?: boolean 
         className={cn(
           "px-2.5 py-1 rounded-full font-medium tracking-wide transition",
           lang === "en"
-            ? "bg-brand text-white shadow-[0_2px_8px_-2px_rgba(124,58,237,0.4)]"
+            ? "bg-ink-primary text-bg-base"
             : "text-ink-secondary hover:text-ink-primary"
         )}
         aria-pressed={lang === "en"}
@@ -32,7 +32,7 @@ export default function LanguageToggle({ compact = false }: { compact?: boolean 
         className={cn(
           "px-2.5 py-1 rounded-full font-medium tracking-wide transition",
           lang === "hi"
-            ? "bg-brand text-white shadow-[0_2px_8px_-2px_rgba(124,58,237,0.4)]"
+            ? "bg-ink-primary text-bg-base"
             : "text-ink-secondary hover:text-ink-primary"
         )}
         aria-pressed={lang === "hi"}

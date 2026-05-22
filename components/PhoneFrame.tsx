@@ -6,9 +6,7 @@ import { cn } from "@/lib/utils";
 import BottomNav from "./BottomNav";
 import AIAgent from "./AIAgent";
 import LanguageToggle from "./LanguageToggle";
-import ThemeToggle from "./ThemeToggle";
 import { LanguageProvider, useT } from "./LanguageProvider";
-import { ThemeProvider } from "./ThemeProvider";
 
 function FrameInner({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -19,18 +17,17 @@ function FrameInner({ children }: { children: ReactNode }) {
     <div className="min-h-screen app-bg flex items-center justify-center p-6">
       <div className="flex flex-col items-center gap-4">
         {/* Demo controls outside the phone */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-3">
           <div className="text-ink-muted text-xs tracking-widest uppercase">{t("frame.preview")}</div>
           <LanguageToggle />
-          <ThemeToggle />
         </div>
 
         {/* Phone shell */}
         <div
           className={cn(
             "relative w-[390px] h-[844px] rounded-[54px]",
-            "bg-bg-base",
-            "shadow-[0_0_0_8px_rgb(var(--phone-bezel)),0_0_0_10px_rgb(var(--phone-bezel-2)),0_30px_60px_-15px_rgb(0_0_0_/_0.35),0_60px_100px_-30px_rgb(0_0_0_/_0.20)]",
+            "bg-bg-base border border-line",
+            "shadow-[0_0_0_8px_#0c0c10,0_30px_80px_-20px_rgba(0,0,0,0.8),0_0_0_9px_#1a1a1f]",
             "overflow-hidden"
           )}
         >
@@ -66,10 +63,8 @@ function FrameInner({ children }: { children: ReactNode }) {
 
 export default function PhoneFrame({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <FrameInner>{children}</FrameInner>
-      </LanguageProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <FrameInner>{children}</FrameInner>
+    </LanguageProvider>
   );
 }

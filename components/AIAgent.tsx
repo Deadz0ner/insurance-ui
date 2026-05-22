@@ -70,11 +70,11 @@ export default function AIAgent() {
       <motion.button
         onClick={() => setOpen(true)}
         whileTap={{ scale: 0.92 }}
-        className="absolute bottom-28 right-4 z-30 w-12 h-12 rounded-full bg-gradient-to-br from-coral to-coral-deep text-white flex items-center justify-center shadow-[0_10px_28px_-6px_rgba(124,58,237,0.55),0_0_0_4px_rgba(124,58,237,0.12)] active:scale-95"
+        className="absolute bottom-28 right-4 z-30 w-12 h-12 rounded-full bg-gradient-to-br from-white to-ink-secondary text-bg-base flex items-center justify-center shadow-[0_8px_28px_-6px_rgba(255,255,255,0.25),0_0_0_1px_rgba(255,255,255,0.08)] active:scale-95"
         aria-label={t("ai.title")}
       >
-        <Sparkles size={18} strokeWidth={2.6} />
-        <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-brand border-[2px] border-bg-base" />
+        <Sparkles size={18} strokeWidth={2.2} />
+        <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-success border-[2px] border-bg-base" />
       </motion.button>
 
       <AnimatePresence>
@@ -105,9 +105,9 @@ export default function AIAgent() {
 
               <div className="px-5 pt-3 pb-3 flex items-center justify-between border-b border-line shrink-0">
                 <div className="flex items-center gap-3">
-                  <div className="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-coral/20 to-coral/5 border border-coral/30 flex items-center justify-center">
-                    <Sparkles size={15} className="text-coral-deep" />
-                    <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-brand border-[2px] border-bg-surface" />
+                  <div className="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-bg-elevated to-bg-card border border-line flex items-center justify-center">
+                    <Sparkles size={15} className="text-ink-primary" />
+                    <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-success border-[2px] border-bg-surface" />
                   </div>
                   <div>
                     <p className="text-[14px] font-semibold tracking-tight">{t("ai.title")}</p>
@@ -126,8 +126,8 @@ export default function AIAgent() {
 
               <div className="flex-1 px-5 py-4 overflow-y-auto phone-scroll space-y-3">
                 <div className="flex gap-2 animate-fade-in">
-                  <div className="w-7 h-7 rounded-lg bg-coral/10 border border-coral/25 flex items-center justify-center shrink-0 mt-0.5">
-                    <Sparkles size={11} className="text-coral-deep" />
+                  <div className="w-7 h-7 rounded-lg bg-bg-card border border-line flex items-center justify-center shrink-0 mt-0.5">
+                    <Sparkles size={11} className="text-ink-primary" />
                   </div>
                   <div className="rounded-2xl rounded-tl-md bg-bg-card border border-line p-3 max-w-[82%]">
                     <p className="text-[12.5px] text-ink-primary leading-relaxed">
@@ -138,15 +138,15 @@ export default function AIAgent() {
 
                 {ctx.suggestions[0] && (
                   <div className="flex justify-end animate-fade-in">
-                    <div className="rounded-2xl rounded-tr-md bg-gradient-to-br from-brand to-brand-deep text-white p-3 max-w-[82%] shadow-[0_4px_14px_-4px_rgba(124,58,237,0.35)]">
-                      <p className="text-[12.5px] leading-relaxed font-semibold">{t(ctx.suggestions[0])}</p>
+                    <div className="rounded-2xl rounded-tr-md bg-ink-primary text-bg-base p-3 max-w-[82%]">
+                      <p className="text-[12.5px] leading-relaxed font-medium">{t(ctx.suggestions[0])}</p>
                     </div>
                   </div>
                 )}
 
                 <div className="flex gap-2 animate-fade-in">
-                  <div className="w-7 h-7 rounded-lg bg-coral/10 border border-coral/25 flex items-center justify-center shrink-0 mt-0.5">
-                    <Sparkles size={11} className="text-coral-deep" />
+                  <div className="w-7 h-7 rounded-lg bg-bg-card border border-line flex items-center justify-center shrink-0 mt-0.5">
+                    <Sparkles size={11} className="text-ink-primary" />
                   </div>
                   <div className="rounded-2xl rounded-tl-md bg-bg-card border border-line p-3 max-w-[82%] space-y-2.5">
                     <p className="text-[12.5px] text-ink-primary leading-relaxed">{t("ai.read")}</p>
@@ -170,8 +170,8 @@ export default function AIAgent() {
                 </div>
 
                 <div className="flex gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-coral/10 border border-coral/25 flex items-center justify-center shrink-0 mt-0.5">
-                    <Sparkles size={11} className="text-coral-deep" />
+                  <div className="w-7 h-7 rounded-lg bg-bg-card border border-line flex items-center justify-center shrink-0 mt-0.5">
+                    <Sparkles size={11} className="text-ink-primary" />
                   </div>
                   <div className="rounded-2xl bg-bg-card border border-line px-4 py-3 flex items-center gap-1.5">
                     {[0, 1, 2].map((i) => (
@@ -208,8 +208,8 @@ export default function AIAgent() {
                   <button className="w-8 h-8 rounded-full text-ink-secondary hover:text-ink-primary flex items-center justify-center transition">
                     <Mic size={15} />
                   </button>
-                  <button className="w-8 h-8 rounded-full bg-gradient-to-br from-coral to-coral-deep text-white flex items-center justify-center active:scale-95 transition shadow-[0_4px_12px_-2px_rgba(124,58,237,0.45)]">
-                    <ArrowUp size={14} strokeWidth={2.8} />
+                  <button className="w-8 h-8 rounded-full bg-ink-primary text-bg-base flex items-center justify-center active:scale-95 transition">
+                    <ArrowUp size={14} strokeWidth={2.6} />
                   </button>
                 </div>
                 <p className="text-center text-[9.5px] text-ink-dim mt-2">{t("ai.disclaimer")}</p>

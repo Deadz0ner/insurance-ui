@@ -32,7 +32,7 @@ export default function BottomNav() {
                 href={tab.href}
                 className={cn(
                   "flex flex-col items-center justify-center gap-1 py-1.5 rounded-2xl transition-all",
-                  active ? "text-brand" : "text-ink-muted hover:text-ink-secondary"
+                  active ? "text-ink-primary" : "text-ink-muted hover:text-ink-secondary"
                 )}
               >
                 <Icon size={20} strokeWidth={active ? 2.4 : 1.8} />
