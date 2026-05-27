@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import BottomNav from "./BottomNav";
 import AIAgent from "./AIAgent";
+import { NotificationsProvider } from "./NotificationCenter";
 import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
 import { LanguageProvider, useT } from "./LanguageProvider";
@@ -34,6 +35,7 @@ function FrameInner({ children }: { children: ReactNode }) {
             "overflow-hidden"
           )}
         >
+          <NotificationsProvider>
           {/* Dynamic island */}
           <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[120px] h-[34px] rounded-full bg-black z-50" />
 
@@ -56,6 +58,7 @@ function FrameInner({ children }: { children: ReactNode }) {
 
           {showNav && <AIAgent />}
           {showNav && <BottomNav />}
+          </NotificationsProvider>
         </div>
 
         <div className="text-ink-dim text-[11px]">{t("frame.spec")}</div>

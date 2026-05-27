@@ -25,7 +25,7 @@ export default function Welcome() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-2.5"
+        className="flex items-center gap-2.5 shrink-0"
       >
         <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand/25 to-brand/5 border border-brand/30 flex items-center justify-center">
           <ShieldCheck size={18} className="text-brand" />
@@ -36,7 +36,7 @@ export default function Welcome() {
         </div>
       </motion.div>
 
-      <div className="flex-1 flex flex-col justify-center -mt-6">
+      <div className="flex-1 flex flex-col justify-center pt-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

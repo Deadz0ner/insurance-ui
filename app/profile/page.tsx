@@ -38,7 +38,7 @@ export default function Profile() {
             <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-gold to-gold-deep flex items-center justify-center text-[28px] font-semibold text-white shadow-[0_8px_20px_-6px_rgba(91,33,182,0.4)]">
               U
             </div>
-            <p className="mt-4 text-[20px] font-semibold tracking-tight">Utkarsh Patidar</p>
+            <p className="mt-4 text-[20px] font-semibold tracking-tight">xyz</p>
             <span className="mt-2 inline-block text-[10px] px-2.5 py-1 rounded-full bg-gradient-to-r from-gold to-gold-deep text-white font-semibold tracking-wider">
               {t("profile.tier")}
             </span>

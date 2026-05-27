@@ -17,10 +17,12 @@
   /* Deeper slate page bg so the phone really pops */
   --page-bg: 184 196 215;          /* between slate-300 and slate-400 */
 
-  --bg-base: 255 255 255;
-  --bg-surface: 250 250 251;
-  --bg-card: 255 255 255;
-  --bg-elevated: 247 247 250;
+  /* Phone interior — tinted violet/lavender, matches the brand.
+     No more bright white. Cards stay white so they still pop. */
+  --bg-base: 237 233 254;          /* violet-100 — soft lavender phone wallpaper */
+  --bg-surface: 245 243 255;       /* slightly lighter — used for sheets / chat */
+  --bg-card: 255 255 255;          /* white cards POP on the lavender wash */
+  --bg-elevated: 250 248 255;      /* near-white with violet hint — hover, icon bg */
 
   --line: 226 232 240;
   --line-soft: 241 245 249;

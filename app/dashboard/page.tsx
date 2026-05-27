@@ -1,20 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import AppShell from "@/components/AppShell";
 import { policies, walletBalance } from "@/lib/data";
 import { useT } from "@/components/LanguageProvider";
+import { NotificationBell } from "@/components/NotificationCenter";
 import {
-  Bell,
   ArrowUpRight,
   Heart,
   Car,
   Plane,
   Activity,
   ChevronRight,
-  ChevronLeft,
   Clock,
 } from "lucide-react";
 
@@ -26,38 +24,25 @@ const typeIcon = {
 };
 
 export default function Dashboard() {
-  const router = useRouter();
   const { t } = useT();
   const expiring = policies.find((p) => p.status === "Expiring");
   const renewDays = expiring?.renewIn.match(/\d+/)?.[0];
 
   return (
     <AppShell>
-      {/* Top action row */}
-      <div className="px-6 pt-3 flex items-center justify-between">
-        <button
-          onClick={() => router.back()}
-          className="w-10 h-10 rounded-full bg-bg-card border border-line flex items-center justify-center text-ink-secondary hover:text-ink-primary transition"
-          aria-label={t("common.back")}
-        >
-          <ChevronLeft size={18} />
-        </button>
-        <button className="w-10 h-10 rounded-full bg-bg-card border border-line flex items-center justify-center relative">
-          <Bell size={17} className="text-ink-secondary" />
-          <span className="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-danger" />
-        </button>
-      </div>
-
-      {/* Greeting — generous breathing room */}
-      <div className="px-6 pt-10 pb-2">
-        <p className="text-[13px] text-ink-muted">{t("dash.greet")}</p>
-        <h1 className="text-[32px] font-semibold tracking-tight leading-tight mt-1">
-          {t("dash.user")}
-        </h1>
-        <p className="text-[12px] text-ink-secondary mt-2.5 flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-brand" />
-          {t("dash.tier")}
-        </p>
+      {/* Greeting + notifications on one line */}
+      <div className="px-6 pt-4 pb-2 flex items-start justify-between">
+        <div>
+          <p className="text-[13px] text-ink-muted">{t("dash.greet")}</p>
+          <h1 className="text-[32px] font-semibold tracking-tight leading-tight mt-1">
+            {t("dash.user")}
+          </h1>
+          <p className="text-[12px] text-ink-secondary mt-2.5 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand" />
+            {t("dash.tier")}
+          </p>
+        </div>
+        <NotificationBell />
       </div>
 
       {/* THE hero — Soft Benefits Wallet */}
